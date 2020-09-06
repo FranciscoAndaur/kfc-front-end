@@ -24,12 +24,12 @@ class App extends React.Component {
   return (
     <div className="App">
       <Header />
-      <div class="uk-flex uk-flex-left">
-        <div class="uk-card uk-card-default uk-card-body">
+      <div className="uk-flex uk-flex-left">
+        <div className="uk-card uk-card-default uk-card-body">
           <UserContainer />
         </div>
 
-        <div class=" uk-card uk-card-default uk-card-body uk-margin-left ">
+        <div className=" uk-card uk-card-default uk-card-body uk-margin-left ">
           <MainContainer />
           <SignUpForm onFormChange={this.handleFormChange} />
         </div>

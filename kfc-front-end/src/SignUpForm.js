@@ -33,11 +33,11 @@ class SignUpForm extends React.Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <fieldset class="uk-fieldset">
-            <legend class="uk-legend">Sign-Up Form</legend>
+          <fieldset className="uk-fieldset">
+            <legend className="uk-legend">Sign-Up Form</legend>
 
             <input
-              class="uk-input"
+              className="uk-input"
               type="text"
               name="name"
               placeholder="Name"

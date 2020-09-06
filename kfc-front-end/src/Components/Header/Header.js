@@ -3,22 +3,22 @@ import React from 'react'
 const Header = () => {
     return (
         <header>
-            <nav class="uk-navbar-container uk-margin" uk-navbar>
-                <div class="uk-navbar-left">
+            <nav className="uk-navbar-container uk-margin" >
+                <div className="uk-navbar-left">
 
-                    <a class="uk-navbar-item uk-logo" href="#"></a>
+                    
 
-                    <ul class="uk-navbar-nav">
+                    <ul className="uk-navbar-nav">
                         <li>
-                            <a href="#">
-                                <span class="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
+                            <a href="./App">
+                                <span className="uk-icon uk-margin-small-right" uk-icon="icon: home"></span>
                                 
                             </a>
                         </li>
                     </ul>
 
-                    <div class="uk-navbar-item">
-                    <button class="uk-button uk-button-default uk-button-small">Sign Up</button>
+                    <div className="uk-navbar-item">
+                    <button className="uk-button uk-button-default uk-button-small">Sign Up</button>
                     </div>
 
                 </div>
