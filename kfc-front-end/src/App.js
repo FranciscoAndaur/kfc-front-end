@@ -7,7 +7,8 @@ import UserContainer from './Components/LeftContainer/UserContainer'
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
+      
       <Header />
       <MainContainer />
       <UserContainer />
