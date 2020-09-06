@@ -1,20 +1,42 @@
-import React from 'react';
+import React from "react";
 
-import './App.css';
-import Header from './Components/Header/Header'
-import MainContainer from './Components/Main/MainContainer'
-import UserContainer from './Components/LeftContainer/UserContainer'
+import "./App.css";
+import Header from "./Components/Header/Header";
+import MainContainer from "./Components/Main/MainContainer";
+import UserContainer from "./Components/LeftContainer/UserContainer";
+import SignUpForm from './SignUpForm'
 
-function App() {
+class App extends React.Component {
+  state = {
+    birthdate: "",
+    name: "",
+    users: [],
+  }
+
+  handleFormChange = () => {
+    this.setState({
+      birthday: this.birthday,
+      name: this.name
+    })
+  } 
+
+  render() {
   return (
-    <div className="app">
-      
+    <div className="App">
       <Header />
-      <MainContainer />
-      <UserContainer />
-      
+      <div class="uk-flex uk-flex-left">
+        <div class="uk-card uk-card-default uk-card-body">
+          <UserContainer />
+        </div>
+
+        <div class=" uk-card uk-card-default uk-card-body uk-margin-left ">
+          <MainContainer />
+          <SignUpForm onFormChange={this.handleFormChange} />
+        </div>
+      </div>
     </div>
-  );
+  )
+  };
 }
 
 export default App;
