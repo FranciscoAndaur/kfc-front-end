@@ -28,7 +28,7 @@ class SignUpForm extends React.Component {
     })
       .then((r) => r.json())
       .then((userInfo) => {
-        this.props.onFormChange(UserInfo);
+        this.props.onFormChange(userInfo);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
