@@ -2,12 +2,8 @@ import React from "react";
 
 const defaultState = {
   name: "",
-<<<<<<< HEAD
-  birthdate: ""
-=======
   birthdate: "",
   isClicked: true
->>>>>>> 2d74e0e2564b8bcda6393eb932cbcaadcae78df8
 }
 
 class SignUpForm extends React.Component {
@@ -23,12 +19,7 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-    // FETCH TO WHERE WE ARE SAVING THE USER INPUT??
-    fetch("http://localhost3000/events", {
-=======
     fetch("http://localhost3000/users", {
->>>>>>> 2d74e0e2564b8bcda6393eb932cbcaadcae78df8
       method: "POST",
       headers: {
         "content-type": "application/json",
