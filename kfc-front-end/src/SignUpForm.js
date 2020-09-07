@@ -2,7 +2,12 @@ import React from "react";
 
 const defaultState = {
   name: "",
+<<<<<<< HEAD
   birthdate: ""
+=======
+  birthdate: "",
+  isClicked: true
+>>>>>>> 2d74e0e2564b8bcda6393eb932cbcaadcae78df8
 }
 
 class SignUpForm extends React.Component {
@@ -15,10 +20,15 @@ class SignUpForm extends React.Component {
     });
   };
 
+
   handleSubmit = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     // FETCH TO WHERE WE ARE SAVING THE USER INPUT??
     fetch("http://localhost3000/events", {
+=======
+    fetch("http://localhost3000/users", {
+>>>>>>> 2d74e0e2564b8bcda6393eb932cbcaadcae78df8
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,12 +38,16 @@ class SignUpForm extends React.Component {
       .then((r) => r.json())
       .then((newEvent) => {
         this.props.onFormChange(newEvent);
-      });
+      })
+      .then(this.setState(prevState => {
+        return { isClicked: !prevState.isClicked }
+      }
+    ))
   };
 
   render() {
     return (
-      <>
+      <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
           <fieldset className="uk-fieldset">
             <legend className="uk-legend">Sign-Up Form</legend>
@@ -55,9 +69,10 @@ class SignUpForm extends React.Component {
               onChange={this.handleChange}
               required
             />
-            <imput type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </fieldset>
-        </form>
+        </form> :
+        ""}
       </>
     );
   }
