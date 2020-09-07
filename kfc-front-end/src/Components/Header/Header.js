@@ -18,7 +18,7 @@ const Header = () => {
                     </ul>
 
                     <div className="uk-navbar-item">
-                    <button className="uk-button uk-button-default uk-button-small">Sign Up</button>
+                    <button onClick={this.handleChange} className="uk-button uk-button-default uk-button-small">Sign Up</button>
                     </div>
 
                 </div>
