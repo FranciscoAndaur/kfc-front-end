@@ -10,7 +10,7 @@ class MainContainer extends React.Component {
         return (
         <>
             <section>
-                <h1>MainContainer</h1>
+                {/* <h1>MainContainer</h1> */}
                     <CommentsComponent />
                     <EventContainer/>
                     <CommentForm />

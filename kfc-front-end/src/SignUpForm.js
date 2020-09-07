@@ -1,7 +1,8 @@
 import React from "react";
+
 const defaultState = {
   name: "",
-  birthdate: "",
+  birthdate: ""
 }
 
 class SignUpForm extends React.Component {
@@ -10,12 +11,13 @@ class SignUpForm extends React.Component {
   handleChange = (event) => {
       console.log(event.target.value)
     this.setState({
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+    // FETCH TO WHERE WE ARE SAVING THE USER INPUT??
     fetch("http://localhost3000/events", {
       method: "POST",
       headers: {
@@ -48,7 +50,7 @@ class SignUpForm extends React.Component {
             <input 
               type="date"
               name="date"
-              value={this.state.birthdate}
+              value={this.state.date}
               placeholder="Date of birth mm/dd/yyyy"
               onChange={this.handleChange}
               required
