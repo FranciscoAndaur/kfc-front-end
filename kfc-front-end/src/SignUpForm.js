@@ -10,7 +10,6 @@ class SignUpForm extends React.Component {
   state = defaultState;
 
   handleChange = (event) => {
-      console.log(event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -19,16 +18,19 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost3000/users", {
+    console.log(event.target.birthdate.value);
+    const userInfo= {name: event.target.name.value, 
+                  birthdate: event.target.birthdate.value}
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(userInfo)
     })
       .then((r) => r.json())
-      .then((userInfo) => {
-        this.props.onFormChange(userInfo);
+      .then((newUser) => {
+        this.props.onFormChange(newUser);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
@@ -55,7 +57,7 @@ class SignUpForm extends React.Component {
 
             <input 
               type="date"
-              name="date"
+              name="birthdate"
               value={this.state.date}
               placeholder="Date of birth mm/dd/yyyy"
               onChange={this.handleChange}
