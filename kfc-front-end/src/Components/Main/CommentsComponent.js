@@ -4,7 +4,7 @@ class CommentsComponent extends React.Component {
     render() {
         return (
             <>
-                <h2>CommentsComponent</h2>
+                
             </>
         )
     }

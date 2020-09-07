@@ -26,14 +26,15 @@ class SignUpForm extends React.Component {
       body: JSON.stringify(this.state),
     })
       .then((r) => r.json())
-      .then((newEvent) => {
-        this.props.onFormChange(newEvent);
+      .then((userInfo) => {
+        this.props.onFormChange(UserInfo);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
       }
     ))
   };
+  ///TODO KAREM FIX THIS SHIT ^^^^^^^
 
   render() {
     return (
