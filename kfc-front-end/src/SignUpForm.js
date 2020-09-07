@@ -2,6 +2,7 @@ import React from "react";
 const defaultState = {
   name: "",
   birthdate: "",
+  isClicked: true
 }
 
 class SignUpForm extends React.Component {
@@ -14,9 +15,10 @@ class SignUpForm extends React.Component {
     });
   };
 
+
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost3000/events", {
+    fetch("http://localhost3000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -26,12 +28,16 @@ class SignUpForm extends React.Component {
       .then((r) => r.json())
       .then((newEvent) => {
         this.props.onFormChange(newEvent);
-      });
+      })
+      .then(this.setState(prevState => {
+        return { isClicked: !prevState.isClicked }
+      }
+    ))
   };
 
   render() {
     return (
-      <>
+      <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
           <fieldset className="uk-fieldset">
             <legend className="uk-legend">Sign-Up Form</legend>
@@ -47,15 +53,16 @@ class SignUpForm extends React.Component {
 
             <input 
               type="date"
-              name="date"
+              name="birthdate"
+              placeholder="mm/dd/yyyy"
               value={this.state.birthdate}
-              placeholder="Date of birth mm/dd/yyyy"
               onChange={this.handleChange}
               required
             />
-            <imput type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
           </fieldset>
-        </form>
+        </form> :
+        ""}
       </>
     );
   }
