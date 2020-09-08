@@ -29,7 +29,6 @@ class App extends React.Component {
         <div className="uk-card uk-card-default uk-card-body">
           <UserContainer />
         </div>
-
         <div className=" uk-card uk-card-default uk-card-body uk-margin-left ">
           <MainContainer />
           <SignUpForm onFormChange={this.handleFormChange} />

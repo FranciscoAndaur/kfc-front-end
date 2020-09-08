@@ -37,7 +37,7 @@ class SignUpForm extends React.Component {
       }
     ))
   };
-  ///TODO KAREM FIX THIS SHIT ^^^^^^^
+  
 
   render() {
     return (
