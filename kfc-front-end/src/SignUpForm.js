@@ -8,14 +8,13 @@ const defaultState = {
 
 class SignUpForm extends React.Component {
   state = defaultState;
-
+// SETSTATE
   handleChange = (event) => {
       console.log(event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     });
   };
-
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -35,9 +34,10 @@ class SignUpForm extends React.Component {
       }
     ))
   };
-  ///TODO KAREM FIX THIS SHIT ^^^^^^^
+
 
   render() {
+    console.log("FROM SIGNUP FORM", this.props)
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>

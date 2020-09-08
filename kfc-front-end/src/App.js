@@ -6,13 +6,24 @@ import MainContainer from "./Components/Main/MainContainer";
 import UserContainer from "./Components/LeftContainer/UserContainer";
 import SignUpForm from './SignUpForm'
 
+
 class App extends React.Component {
+  // SET INITIAL STATE
   state = {
     birthdate: "",
     name: "",
     users: [],
   }
-
+// CALLBACK FUNCTION TO FETCH API
+  handleClickForApi() {
+   fetch("https://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=1994")
+    .then(r => r.json())
+    .then((eventsArr) => {
+      console.log(eventsArr)
+    })
+  }
+ 
+// FOR FORM CHILD
   handleFormChange = () => {
     this.setState({
       birthday: this.birthday,
@@ -32,7 +43,7 @@ class App extends React.Component {
 
         <div className=" uk-card uk-card-default uk-card-body uk-margin-left ">
           <MainContainer />
-          <SignUpForm onFormChange={this.handleFormChange} />
+          <SignUpForm onFormChange={this.handleFormChange} handleClickForApi={this.handleClickForApi}/>
         </div>
       </div>
     </div>
