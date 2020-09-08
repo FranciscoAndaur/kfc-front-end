@@ -7,7 +7,7 @@ class UserCard extends React.Component {
                 
                     <div className="uk-light uk-background-secondary uk-padding">
                         <h3>UserName</h3>
-                        <p>user snippet has to be long so the page rendest correctly</p>
+                        <p>user snippet has to be this long </p>
                         <button className="uk-button uk-button-default">Button</button>
                     </div>
                 

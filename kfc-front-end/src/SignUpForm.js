@@ -43,7 +43,7 @@ class SignUpForm extends React.Component {
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
-          <fieldset className="uk-fieldset">
+          
             <legend className="uk-legend">Sign-Up Form</legend>
 
             <input
@@ -53,18 +53,21 @@ class SignUpForm extends React.Component {
               placeholder="Name"
               value={this.state.name}
               onChange={this.handleChange}
+              required
             />
-
             <input 
+              className="uk-input"
               type="date"
               name="birthdate"
               value={this.state.date}
-              placeholder="Date of birth mm/dd/yyyy"
+              placeholder=""
               onChange={this.handleChange}
               required
             />
-            <input type="submit" value="Submit" />
-          </fieldset>
+            <button type="submit" 
+            value="Submit" 
+            className="uk-button uk-button-default">Submit</button>
+          
         </form> :
         ""}
       </>
