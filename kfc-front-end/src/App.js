@@ -13,15 +13,34 @@ class App extends React.Component {
     users: [],
   }
 
+  // componentDidMount = () => {
+  //   fetch("http://localhost:3000/users")
+  //   .then(r => r.json())
+  //   .then((userObj) => {
+  //     userObj.map((user) => {if user})
+
+  //   })
+  // }
+
+  componentDidMount = () => {
+    
+  fetch("http://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=1989")
+  .then(r => r.json())
+  .then(events => {
+    console.log(events)
+  }) 
+  }
+
+
   handleFormChange = () => {
     this.setState({
       birthday: this.birthday,
       name: this.name
     })
   } 
-
+  
   render() {
-    
+     
   return (
     <div className="App">
       <Header />
