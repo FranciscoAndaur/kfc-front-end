@@ -15,11 +15,13 @@ class App extends React.Component {
     users: [],
   }
 // CALLBACK FUNCTION TO FETCH API
-  handleClickForApi() {
+  handleClickForApi = (event) => {
+    console.log(event.target)
+    console.log(this.state)
    fetch("https://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=1994")
     .then(r => r.json())
     .then((eventsArr) => {
-      console.log(eventsArr)
+      // console.log(eventsArr)
     })
   }
  

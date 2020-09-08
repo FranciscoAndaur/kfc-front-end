@@ -12,12 +12,13 @@ class SignUpForm extends React.Component {
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
+      
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.birthdate.value);
+    // console.log(event.target.birthdate.value);
     const userInfo= {name: event.target.name.value, 
                   birthdate: event.target.birthdate.value}
     fetch("http://localhost:3000/users", {
@@ -39,7 +40,7 @@ class SignUpForm extends React.Component {
   
 
   render() {
-    console.log("FROM SIGNUP FORM", this.props)
+    // console.log("FROM SIGNUP FORM", this.props)
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
