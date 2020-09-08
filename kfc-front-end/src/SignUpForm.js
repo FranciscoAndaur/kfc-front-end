@@ -10,7 +10,6 @@ class SignUpForm extends React.Component {
   state = defaultState;
 // SETSTATE
   handleChange = (event) => {
-      console.log(event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -18,30 +17,33 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost3000/users", {
+    console.log(event.target.birthdate.value);
+    const userInfo= {name: event.target.name.value, 
+                  birthdate: event.target.birthdate.value}
+    fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(userInfo)
     })
       .then((r) => r.json())
-      .then((userInfo) => {
-        this.props.onFormChange(userInfo);
+      .then((newUser) => {
+        this.props.onFormChange(newUser);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
       }
     ))
   };
-
+  
 
   render() {
     console.log("FROM SIGNUP FORM", this.props)
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
-          <fieldset className="uk-fieldset">
+          
             <legend className="uk-legend">Sign-Up Form</legend>
 
             <input
@@ -51,18 +53,21 @@ class SignUpForm extends React.Component {
               placeholder="Name"
               value={this.state.name}
               onChange={this.handleChange}
+              required
             />
-
             <input 
+              className="uk-input"
               type="date"
-              name="date"
+              name="birthdate"
               value={this.state.date}
-              placeholder="Date of birth mm/dd/yyyy"
+              placeholder=""
               onChange={this.handleChange}
               required
             />
-            <input type="submit" value="Submit" />
-          </fieldset>
+            <button type="submit" 
+            value="Submit" 
+            className="uk-button uk-button-default">Submit</button>
+          
         </form> :
         ""}
       </>

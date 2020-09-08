@@ -3,11 +3,8 @@ import UserCard from './UserCard'
 
 const UserContainer = () => {
     return (
-        < >
-            <aside>
-                
+        <>
                 <UserCard />
-            </aside>
         </>
     )
 }
