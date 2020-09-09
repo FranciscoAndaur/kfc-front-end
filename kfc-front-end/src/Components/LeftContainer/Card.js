@@ -4,7 +4,7 @@ import React from 'react'
 class Card extends React.Component {
     render() {
         // let { name, birthdate } = this.props.users
-        console.log(this.props)
+        // console.log(this.props)
         return(
             <>
             <div className="uk-light uk-background-secondary uk-padding">

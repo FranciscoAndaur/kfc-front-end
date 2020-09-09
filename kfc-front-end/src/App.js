@@ -12,23 +12,36 @@ class App extends React.Component {
   state = {
     birthdate: "",
     name: "",
-    // apiResponse: {}
+    apiResponse: {}
   }
 
   // GET YEAR
   getYear = () => {
     return this.state.birthdate.slice(0, 4)
   }
+  // GET MONTH
+  getMonth = () => {
+    return this.state.birthdate.slice(5, 7)
+  }
+  //GET DAY
+  getDay = () => {
+    return this.state.birthdate.slice(8, 10)
+  }
 
   // HANDLE API
   handleApi = () => {
     // debugger
     const year = this.getYear()
-    if (year) {
-      fetch(`https://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=${year}`)
+    const month = this.getMonth()
+    const day = this.getDay()
+    
+      fetch(`https://history.muffinlabs.com/date/${month}/${day}`)
       .then(r => r.json())
-      .then(data => console.log(data))
-    }
+      .then(data => 
+        this.setState({
+          apiResponse: data
+        }))
+    console.log(this.state.apiResponse)
   }
 
   componentDidUpdate() {
