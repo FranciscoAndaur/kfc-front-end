@@ -8,26 +8,16 @@ class UserCard extends React.Component {
     
     render() {
         // console.log(this.props.users.forEach(users => console.log("from map in Usercard", users)))
-        // let allUsers = this.props.users.forEach(users => {
-            // return <Card userObj={users} key={users.id} />
-        //     return <>
-        //     <div key={users.id}className="uk-light uk-background-secondary uk-padding">
-        //                 <h3>{users.name}</h3>
-        //                 <p>user snippet has to be this long </p>
-        //                 <button className="uk-button uk-button-default">button</button>
-        //             </div>
-
-        //     </>
-        // })
+        console.log(this.props.users)
+        let allUsers = this.props.users.map(user => {
+            return <Card userObj={user} key={user.id} />
+        })
         
         
         return (
-            <>
-                <Card>
-                 {/* {allUsers} */}
-                </Card>
-                
-            </>
+            <div>
+                {allUsers}
+            </div>
         )
     }
 }

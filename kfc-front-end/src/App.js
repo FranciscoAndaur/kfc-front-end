@@ -37,11 +37,9 @@ class App extends React.Component {
     
       fetch(`https://history.muffinlabs.com/date/${month}/${day}`)
       .then(r => r.json())
-      .then(data => 
-        this.setState({
-          apiResponse: data
-        }))
-    console.log(this.state.apiResponse)
+      .then(data => {
+        debugger
+      })
   }
 
   componentDidUpdate() {
