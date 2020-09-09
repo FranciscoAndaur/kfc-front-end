@@ -17,7 +17,7 @@ class SignUpForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.birthdate.value);
+    // console.log(event.target.birthdate.value);
     const userInfo= {name: event.target.name.value, 
                   birthdate: event.target.birthdate.value}
     fetch("http://localhost:3000/users", {
@@ -29,7 +29,8 @@ class SignUpForm extends React.Component {
     })
       .then((r) => r.json())
       .then((newUser) => {
-        this.props.onFormChange(newUser);
+        // console.log("NEW USER FROM FORM", newUser)
+        this.props.handleFormChange(newUser);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
@@ -39,7 +40,8 @@ class SignUpForm extends React.Component {
   
 
   render() {
-    console.log("FROM SIGNUP FORM", this.props)
+    // console.log("FORM", this.state)
+    // console.log("FROM SIGNUP FORM", this.props)
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
@@ -59,7 +61,7 @@ class SignUpForm extends React.Component {
               className="uk-input"
               type="date"
               name="birthdate"
-              value={this.state.date}
+              value={this.state.birthdate}
               placeholder=""
               onChange={this.handleChange}
               required

@@ -6,33 +6,47 @@ import MainContainer from "./Components/Main/MainContainer";
 import UserContainer from "./Components/LeftContainer/UserContainer";
 import SignUpForm from './SignUpForm'
 
-
+// birthdate.slice(0,4)
 class App extends React.Component {
   // SET INITIAL STATE
   state = {
     birthdate: "",
     name: "",
-    users: [],
+    // apiResponse: {}
   }
-// CALLBACK FUNCTION TO FETCH API
-  handleClickForApi() {
-   fetch("https://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=1994")
-    .then(r => r.json())
-    .then((eventsArr) => {
-      console.log(eventsArr)
-    })
+
+  // GET YEAR
+  getYear = () => {
+    return this.state.birthdate.slice(0, 4)
+  }
+
+  // HANDLE API
+  handleApi = () => {
+    // debugger
+    const year = this.getYear()
+    if (year) {
+      fetch(`https://en.wikipedia.org/w/api.php?format=json&callback=API_REQUEST_DONE&action=query&prop=extracts&indexpageids&titles=${year}`)
+      .then(r => r.json())
+      .then(data => console.log(data))
+    }
+  }
+
+  componentDidUpdate() {
+    this.handleApi()
   }
  
 // FOR FORM CHILD
-  handleFormChange = () => {
+  handleFormChange = (obj) => {
+    // console.log("APP", obj)
     this.setState({
-      birthday: this.birthday,
-      name: this.name
+      birthdate: obj.birthdate,
+      name: obj.name
     })
+    // this.handleApi(obj)
   } 
   
   render() {
-    console.log("FROM APP",this.state)
+    // console.log("FROM APP",this.state)
   return (
     <div className="App">
       <Header />
@@ -42,7 +56,7 @@ class App extends React.Component {
         </div>
         <div className=" uk-card uk-card-default uk-card-body uk-margin-left ">
           <MainContainer />
-          <SignUpForm onFormChange={this.handleFormChange} handleClickForApi={this.handleClickForApi}/>
+          <SignUpForm handleFormChange={this.handleFormChange} handleApi={this.handleApi} />
         </div>
       </div>
     </div>
