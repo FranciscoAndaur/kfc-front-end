@@ -1,14 +1,19 @@
 import React from 'react'
+import EventContainer from '../Main/EventContainer'
 class Card extends React.Component {
+
+
+
     render() {
+    
         let { name, birthdate } = this.props.userObj
-        // console.log("from card: ", this.props.userObj)
+        
         return(
             <div>
             <div className="uk-light uk-background-secondary uk-padding">
                         <h3>{name}</h3>
                         <p>{birthdate} </p>
-                        <button className="uk-button uk-button-default">Button</button>
+                        <button onClick={() => this.props.handleClick(birthdate) } className="uk-button uk-button-default">Render Events</button>
                     </div>
 ​
             </div>

@@ -12,7 +12,7 @@ class MainContainer extends React.Component {
             <section>
                 
                     <CommentsComponent />
-                    <EventContainer/>
+                    <EventContainer eventsfromBACKEND={this.props}/>
                     <CommentForm />
             </section>
         </>
