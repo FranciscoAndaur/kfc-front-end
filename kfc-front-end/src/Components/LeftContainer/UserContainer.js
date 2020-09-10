@@ -1,6 +1,5 @@
 import React from 'react'
 import UserCard from './UserCard'
-const backEndAPIUsers = ("http://localhost:3000/users")
 
 class UserContainer extends React.Component {
     state = {
@@ -9,23 +8,22 @@ class UserContainer extends React.Component {
         }
 
     componentDidMount() {
-            fetch(backEndAPIUsers)
+            fetch("http://localhost:3000/users")
             .then(r => r.json())
             .then((userData) => {
                 this.setState({
                 users: userData
                 })
             })
-        }
-        
+        }   
     render() {
-        // let filteredUsers = this.state.users.filter(users => {
-        //     return users.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-        //   })
+        let filteredUsers = this.state.users.filter(users => {
+            return users.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+          })
     return (
-        <>
-                <UserCard />
-        </>
+        <div>
+                <UserCard users={filteredUsers} />
+        </div>
     )
     }
 }
