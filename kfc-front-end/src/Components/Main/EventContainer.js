@@ -14,7 +14,7 @@ class EventContainer extends React.Component {
             <div className="uk-child-width-1@s uk-text-center" uk-grid='true'>
                 <dl className="uk-description-list uk-description-list-divider">
                 <div className="uk-background-default uk-padding uk-panel">
-                    <dt>Description term</dt>
+                    <dt>Event Container</dt>
 
 
                     {this.renderEvents()}

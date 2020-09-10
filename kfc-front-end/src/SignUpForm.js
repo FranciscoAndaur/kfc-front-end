@@ -59,8 +59,6 @@ class SignUpForm extends React.Component {
 let eventsArr = this.state.birthdateEvents.map(obj => 
   ({conceptionDate: this.state.birthdate, content: obj.text})
   )
-
-
     fetch("http://localhost:3000/events", {
       method: "POST",
       headers: {
@@ -70,14 +68,12 @@ let eventsArr = this.state.birthdateEvents.map(obj =>
     })
       .then((r) => r.json())
       .then((newEvtArr) => {
-
       })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
     this.handleApi()
-  
     const userInfo= {name: event.target.name.value, 
                   birthdate: event.target.birthdate.value}
     fetch("http://localhost:3000/users", {
@@ -90,6 +86,7 @@ let eventsArr = this.state.birthdateEvents.map(obj =>
       .then((r) => r.json())
       .then((newUser) => {
         this.handleFormChange(newUser);
+        this.props.addUserToUserCont(newUser)
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
