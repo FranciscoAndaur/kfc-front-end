@@ -1,24 +1,85 @@
 import React from "react";
 
+// SET INITIAL STATE
 const defaultState = {
   name: "",
   birthdate: "",
-  isClicked: true
+  isClicked: true,
+  birthdateEvents: []
 }
 
 class SignUpForm extends React.Component {
   state = defaultState;
-// SETSTATE
+
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
-      
+      [event.target.name]: event.target.value 
     });
   };
 
+  handleFormChange = (obj) => {
+    this.setState({
+      birthdate: obj.birthdate,
+      name: obj.name
+    })
+  } 
+
+    // GET YEAR
+    getYear = () => {
+      return this.state.birthdate.slice(0, 4)
+    }
+    // GET MONTH
+    getMonth = () => {
+      return this.state.birthdate.slice(5, 7)
+    }
+    //GET DAY
+    getDay = () => {
+      return this.state.birthdate.slice(8, 10)
+    }
+
+  // HANDLE API
+  handleApi = () => {
+    const birthYear = this.getYear()
+    const month = this.getMonth()
+    const day = this.getDay()
+    let apiResponse = [];
+      fetch(`https://history.muffinlabs.com/date/${month}/${day}`)
+      .then(r => r.json())
+      .then(data => { data.data.Events.filter(event => 
+        {if (parseInt(event.year) >= birthYear){
+          apiResponse.push(event)
+        }})
+        this.setState({
+          birthdateEvents: apiResponse
+        }, () => this.saveEvents())
+      })
+  }
+
+  saveEvents = () => {
+// console.log(this.state.birthdateEvents)
+let eventsArr = this.state.birthdateEvents.map(obj => 
+  ({conceptionDate: this.state.birthdate, content: obj.text})
+  )
+console.log("THIS", eventsArr)
+
+    fetch("http://localhost:3000/events", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({events: eventsArr})
+    })
+      .then((r) => r.json())
+      .then((newEvtArr) => {
+
+        // console.log(newEvtArr)
+      })
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(event.target.birthdate.value);
+    this.handleApi()
+  
     const userInfo= {name: event.target.name.value, 
                   birthdate: event.target.birthdate.value}
     fetch("http://localhost:3000/users", {
@@ -30,8 +91,7 @@ class SignUpForm extends React.Component {
     })
       .then((r) => r.json())
       .then((newUser) => {
-        // console.log("NEW USER FROM FORM", newUser)
-        this.props.handleFormChange(newUser);
+        this.handleFormChange(newUser);
       })
       .then(this.setState(prevState => {
         return { isClicked: !prevState.isClicked }
@@ -41,8 +101,6 @@ class SignUpForm extends React.Component {
   
 
   render() {
-    // console.log("FORM", this.state)
-    // console.log("FROM SIGNUP FORM", this.props)
     return (
       <>{this.state.isClicked ?
         <form onSubmit={this.handleSubmit}>
@@ -70,7 +128,6 @@ class SignUpForm extends React.Component {
             <button type="submit" 
             value="Submit" 
             className="uk-button uk-button-default">Submit</button>
-          
         </form> :
         ""}
       </>
