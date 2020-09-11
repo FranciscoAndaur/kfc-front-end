@@ -45,7 +45,6 @@ class App extends React.Component {
   fetchContents = (birthdate) => {
     let allEvents = [];
     fetch("http://localhost:3000/events")
-<<<<<<< HEAD
       .then(r => r.json())
       .then(eventsArr => {
         eventsArr.filter(evt => {
@@ -57,17 +56,6 @@ class App extends React.Component {
           eventsfromBACKEND: allEvents
         }, () => console.log(this.state.eventsfromBACKEND))
       })
-=======
-    .then(r => r.json())
-    .then(eventsArr => { eventsArr.filter(evt => {
-      if (parseInt(evt.conceptionDate) === parseInt(birthdate)){
-        allEvents.push(evt.content)
-      }})
-      this.setState({
-        eventsfromBACKEND: allEvents
-    }, () => console.log(this.state.eventsfromBACKEND))
-  })
->>>>>>> 290e976b1e5e62336499b90ae8c56e60046a6c72
   }
 
   displayCard = () => {
@@ -78,13 +66,9 @@ class App extends React.Component {
 
   handleShowSignUpFormClick = () => {
     this.setState({
-<<<<<<< HEAD
 
       showSignUpForm: true
     })
-=======
-      showSignUpForm: true})
->>>>>>> 290e976b1e5e62336499b90ae8c56e60046a6c72
   }
   handleDelete = (name) => {
     let filteredArray = this.state.users.filter((userObject) => {
