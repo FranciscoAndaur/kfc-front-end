@@ -15,7 +15,7 @@ class EventContainer extends React.Component {
             <div className="uk-child-width-1@s uk-text-left" uk-grid='true'>
                 <dl className="uk-description-list uk-description-list-divider">
                 <div className="uk-background-default uk-padding uk-panel">
-                <span className="uk-label uk-label-success"> <h4><strong><strong><strong><strong>Events</strong></strong></strong></strong></h4> </span>
+                <span className="uk-label uk-label-success"> <h4>Events</h4> </span>
 
 
                     

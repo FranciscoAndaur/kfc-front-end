@@ -1,5 +1,4 @@
 import React from 'react'
-import EventContainer from '../Main/EventContainer'
 class Card extends React.Component {
 
     deleteUser = (evt) => {console.log(this.props)
