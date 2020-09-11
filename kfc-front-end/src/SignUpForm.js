@@ -57,7 +57,7 @@ class SignUpForm extends React.Component {
 
   saveEvents = () => {
 let eventsArr = this.state.birthdateEvents.map(obj => 
-  ({conceptionDate: this.state.birthdate, content: obj.text})
+  ({conceptionDate: this.state.birthdate, content: obj.text, year: obj.year})
   )
     fetch("http://localhost:3000/events", {
       method: "POST",
