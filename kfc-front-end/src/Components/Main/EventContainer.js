@@ -1,6 +1,7 @@
 import React from 'react'
 
 class EventContainer extends React.Component {
+
     renderEvents = () => {
         return this.props.eventsfromBACKEND.eventsfromBACKEND.map((content) => {
         return (<li key={content} text-align="left">{content}</li>)

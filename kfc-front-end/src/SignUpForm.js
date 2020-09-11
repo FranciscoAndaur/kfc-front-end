@@ -10,7 +10,6 @@ const defaultState = {
 
 class SignUpForm extends React.Component {
   state = defaultState;
-
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value 

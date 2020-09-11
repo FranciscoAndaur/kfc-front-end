@@ -7,7 +7,6 @@ class UserContainer extends React.Component {
     }
      
     render() {
-        
         let filteredUsers = this.props.users.filter(users => {
             return users.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
           })

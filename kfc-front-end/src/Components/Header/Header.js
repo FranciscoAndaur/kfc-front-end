@@ -14,7 +14,6 @@ const Header = () => {
                     </ul>
 
                     <div className="uk-navbar-item">
-                        {/* button used to be here  */}
                     </div>
 
                 </div>

@@ -12,15 +12,10 @@ class Card extends React.Component {
         this.props.handleDelete(this.props.userObj.name)
     }
 
-
     render() {
 
         let { name, birthdate, bio, imageURL } = this.props.userObj
-
         return (
-
-            
-
 <div className="uk-animation-toggle" tabindex="0">
 <div className="uk-card uk-card-default uk-card-body uk-animation-slide-left-small">
     <p cslassName="uk-text-center"><div>
@@ -30,7 +25,6 @@ class Card extends React.Component {
         <img src={imageURL} alt={name} uk-cover="true"/>
         <canvas width="600" height="400"></canvas>
         </div><h3><strong>{birthdate}</strong></h3>
-    
     <div>
         <div className="uk-card-body">
         <h3 className="uk-card-title">{name}</h3>
@@ -41,13 +35,11 @@ class Card extends React.Component {
         </div>
     </div>
 </div>
-
-
             </div></p>
 </div>
 </div>
-
         )
     }
 }
+
 export default Card
