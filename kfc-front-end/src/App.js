@@ -53,7 +53,7 @@ class App extends React.Component {
       }})
       this.setState({
         eventsfromBACKEND: allEvents
-    }, () =>   console.log(this.state.eventsfromBACKEND))
+    }, () => console.log(this.state.eventsfromBACKEND))
   })
   }
 
@@ -64,9 +64,7 @@ class App extends React.Component {
   }
 
   handleShowSignUpFormClick = () => {
-
     this.setState({
-      
       showSignUpForm: true})
   }
   
