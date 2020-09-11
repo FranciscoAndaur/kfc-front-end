@@ -4,19 +4,25 @@ class EventContainer extends React.Component {
 
     renderEvents = () => {
         return this.props.eventsfromBACKEND.eventsfromBACKEND.map((content) => {
-        return (<dd key={content}>{content}</dd>)
+        return (<li key={content} text-align="left">{content}</li>)
         }
         )
     }
     render() {
+        
 
         return (
             <div>
-            <div className="uk-child-width-1@s uk-text-center" uk-grid='true'>
+            <div className="uk-child-width-1@s uk-text-left" uk-grid='true'>
                 <dl className="uk-description-list uk-description-list-divider">
                 <div className="uk-background-default uk-padding uk-panel">
-                    <dt>EVENTS:</dt>
-                    {this.renderEvents()}
+                <span className="uk-label uk-label-success"> <h4><strong><strong><strong><strong>Events</strong></strong></strong></strong></h4> </span>
+
+
+                    
+                    <h4><ul>{this.renderEvents()}</ul></h4>
+
+                    
                     </div>
                 </dl>
                 </div>

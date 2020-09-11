@@ -12,7 +12,7 @@ class UserContainer extends React.Component {
           })
     return (
         <div>
-                <UserCard users={filteredUsers} handleClick={this.props.handleClick}  />
+                <UserCard users={filteredUsers} handleClick={this.props.handleClick} handleDelete={this.props.handleDelete}  />
         </div>
     )
     }
