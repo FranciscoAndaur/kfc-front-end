@@ -15,6 +15,8 @@ class App extends React.Component {
   }
 
 
+
+
   componentDidMount() {
     fetch("http://localhost:3000/users")
     .then(r => r.json())
@@ -69,23 +71,36 @@ class App extends React.Component {
       
       showSignUpForm: true})
   }
+  handleDelete = (name) => {
+    let filteredArray = this.state.users.filter((userObject) => {
+      return userObject.name !== name
+    })
+    this.setState({
+      users: filteredArray
+    })
+  }
   
   render() {
+    
     console.log('test:', 'color:green;', this.state.clickedInCard)
   return (
     <div className="App">
       <Header />
       <div className="uk-flex uk-flex-left">
         <div className="uk-card uk-card-default uk-card-body">
-          <UserContainer handleClick={this.handleClick}
+          <UserContainer 
+          handleDelete={this.handleDelete}
+          handleClick={this.handleClick}
           users={this.state.users}
           />
         </div>
         <div className=" uk-card uk-card-default uk-card-body uk-margin-left ">
         {this.state.showSignUpForm ? <SignUpForm 
          addUserToUserCont={this.addUserToUserCont}
-         /> : <button onClick={this.handleShowSignUpFormClick}>Show SignUp Form</button> }
-          <MainContainer displayCard ={this.displayCard} eventsfromBACKEND={this.state.eventsfromBACKEND}/>
+         /> : <div onClick={this.handleShowSignUpFormClick}className="uk-card-badge uk-label-danger">SignUp Form</div> }
+          <MainContainer 
+          displayCard ={this.displayCard} 
+          eventsfromBACKEND={this.state.eventsfromBACKEND}/>
         </div>
       </div>
     </div>

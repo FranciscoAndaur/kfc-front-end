@@ -75,7 +75,9 @@ let eventsArr = this.state.birthdateEvents.map(obj =>
     event.preventDefault();
     this.handleApi()
     const userInfo= {name: event.target.name.value, 
-                  birthdate: event.target.birthdate.value}
+                  birthdate: event.target.birthdate.value,
+                  bio: event.target.bio.value,
+                  imageURL: event.target.imageURL.value}
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
@@ -108,6 +110,24 @@ let eventsArr = this.state.birthdateEvents.map(obj =>
               name="name"
               placeholder="Name"
               value={this.state.name}
+              onChange={this.handleChange}
+              required
+            />
+            <input
+              className="uk-input"
+              type="text"
+              name="bio"
+              placeholder="Bio: Write a little Snippet about yourself"
+              value={this.state.bio}
+              onChange={this.handleChange}
+              required
+            />
+            <input
+              className="uk-input"
+              type="text"
+              name="imageURL"
+              placeholder="Avatar: Must be in form of image URL"
+              value={this.state.imageURL}
               onChange={this.handleChange}
               required
             />

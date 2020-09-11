@@ -3,7 +3,7 @@ import React from 'react'
 class EventContainer extends React.Component {
     renderEvents = () => {
         return this.props.eventsfromBACKEND.eventsfromBACKEND.map((content) => {
-        return (<dd key={content}>{content}</dd>)
+        return (<li key={content} text-align="left">{content}</li>)
         }
         )
     }
@@ -11,13 +11,15 @@ class EventContainer extends React.Component {
 
         return (
             <div>
-            <div className="uk-child-width-1@s uk-text-center" uk-grid='true'>
+            <div className="uk-child-width-1@s uk-text-left" uk-grid='true'>
                 <dl className="uk-description-list uk-description-list-divider">
                 <div className="uk-background-default uk-padding uk-panel">
-                    <dt>Event Container</dt>
+                <span className="uk-label uk-label-success"> Events </span>
 
 
-                    {this.renderEvents()}
+                    
+                    <ul>{this.renderEvents()}</ul>
+
                     
                     </div>
                 </dl>
